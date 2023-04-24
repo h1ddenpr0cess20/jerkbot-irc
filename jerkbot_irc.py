@@ -90,7 +90,6 @@ class AIBot(irc.bot.SingleServerIRCBot):
 
     #gets the userlist
     def on_namreply(self, c, e):
-        #self.users.clear()
         userlist = e.arguments[2].split()
         for name in userlist:
             for symbol in self.symbols:
@@ -98,7 +97,6 @@ class AIBot(irc.bot.SingleServerIRCBot):
                     name = name.lstrip(symbol)
             if name not in self.users:
                 self.users.append(name)
-        #print(self.users)
                 
     #when bot joins network, identify and wait, then join channel   
     def on_welcome(self, c, e):
