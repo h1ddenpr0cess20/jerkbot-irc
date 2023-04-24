@@ -6,7 +6,8 @@ Jerkbot is an OpenAI chatbot for IRC (Internet Relay Chat).  It is named for the
 ```
 pip3 install openai irc
 ```
-Fill in the variables for channel, nickname, password and server in ircBotLauncher.py
+Fill in the variables for channel, nickname, password and server in ircBotLauncher.py.  
+You need a registered nickname for this, but in the future I will make registration optional.  Registration is required for some channels.
 
 ## Use
 ```
