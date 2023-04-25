@@ -8,8 +8,13 @@ openai.api_key = "API_KEY"
 personality = "a sarcastic jerk"
 channel = "#CHANNEL"
 nickname = "NICKNAME"
-password = "PASSWORD"
+password = "PASSWORD" #comment out if unregistered
 server = "SERVER"
 
-bot = jb.AIBot(personality, channel, nickname, password, server)
+#check if there is a password
+try:
+    bot = jb.AIBot(personality, channel, nickname, server, password)
+except:
+    bot = jb.AIBot(personality, channel, nickname, server)
+    
 bot.start()
