@@ -6,7 +6,7 @@ import threading
 
   
 class AIBot(irc.bot.SingleServerIRCBot):
-    def __init__(self, personality, channel, nickname, password, server, port=6667):
+    def __init__(self, personality, channel, nickname, server, password=None, port=6667):
         irc.bot.SingleServerIRCBot.__init__(self, [(server, port)], nickname, nickname)
         
         self.personality = personality
@@ -100,17 +100,22 @@ class AIBot(irc.bot.SingleServerIRCBot):
                 
     #when bot joins network, identify and wait, then join channel   
     def on_welcome(self, c, e):
-        c.privmsg("NickServ", "IDENTIFY {}".format(self.password))
-        time.sleep(7)
+        #if nick has a password
+        if self.password != None:
+          c.privmsg("NickServ", "IDENTIFY {}".format(self.password))
+          #wait for identify to finish
+          time.sleep(7)
+        
         c.join(self.channel)
-        self.messages.clear()
-        c.privmsg(self.channel, "I'm an OpenAI chatbot.  Type .help {} for more info".format(self.nickname))
+        #option join message
+        #c.privmsg(self.channel, "I'm an OpenAI chatbot.  Type .help {} for more info".format(self.nickname))
         
     def on_nicknameinuse(self, c, e):
+        #add an underscore if nickname is in use
         c.nick(c.get_nickname() + "_")
         
-    def on_join(self, c, e):
-        pass
+    #def on_join(self, c, e):
+        
         #add AI generated greeting here
 
     #process chat messages
@@ -133,6 +138,7 @@ class AIBot(irc.bot.SingleServerIRCBot):
                     message = message.strip()
                 else:
                     message = message.lstrip(self.nickname)
+                    #allows both botname: <message> and botname <message> to work
                     if message.startswith(":"):
                         message.lstrip(":")
                     message = message.strip()
@@ -147,7 +153,7 @@ class AIBot(irc.bot.SingleServerIRCBot):
                     thread = threading.Thread(target=self.respond, args=(c, sender, self.messages[sender]))
                     thread.start()
                     thread.join(timeout=30)
-                    time.sleep(2)
+                    time.sleep(2) #help prevent mixing user output
 
             #collborative use
             if message.startswith(".x "):
@@ -219,6 +225,11 @@ if __name__ == "__main__":
     password = "PASSWORD"
     server = "SERVER"
     
-    bot = AIBot(personality, channel, nickname, password, server)
+    #checks if password variable exists (comment it out if unregistered)
+    try:
+      bot = AIBot(personality, channel, nickname, server, password)
+    except:
+      bot = AIBot(personality, channel, nickname, server)
+      
     bot.start()
 
