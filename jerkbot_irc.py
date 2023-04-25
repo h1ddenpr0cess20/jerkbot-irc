@@ -107,8 +107,8 @@ class AIBot(irc.bot.SingleServerIRCBot):
           time.sleep(7)
         
         c.join(self.channel)
-        #option join message
-        #c.privmsg(self.channel, "I'm an OpenAI chatbot.  Type .help {} for more info".format(self.nickname))
+        #optional join message
+        c.privmsg(self.channel, "I'm an OpenAI chatbot.  Type .help {} for more info".format(self.nickname))
         
     def on_nicknameinuse(self, c, e):
         #add an underscore if nickname is in use
@@ -211,6 +211,8 @@ class AIBot(irc.bot.SingleServerIRCBot):
                 c.privmsg(self.channel, ".reset to reset to my default personality, {}.".format(self.personality))
                 time.sleep(1)
                 c.privmsg(self.channel, ".stock to set to stock GPT settings.")
+                time.sleep(3)
+                c.privmsg(self.channel, "Available at https://github.com/h1ddenpr0cess20/jerkbot-irc")
 
 if __name__ == "__main__":
 
