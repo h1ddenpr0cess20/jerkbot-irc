@@ -8,7 +8,7 @@ openai.api_key = "API_KEY"
 personality = "a sarcastic jerk"
 channel = "#CHANNEL"
 nickname = "NICKNAME"
-password = "PASSWORD" #comment out if unregistered
+#password = "PASSWORD" #comment out if unregistered
 server = "SERVER"
 
 #check if there is a password
