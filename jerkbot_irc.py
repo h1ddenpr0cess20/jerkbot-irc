@@ -52,6 +52,10 @@ class AIBot(irc.bot.SingleServerIRCBot):
             response = openai.ChatCompletion.create(model='gpt-3.5-turbo', messages=self.messages[sender])
         except openai.error.InvalidRequestError:
             c.privmsg(self.channel, "Token size too large, try .reset")
+        except openai.error.APIError:
+            c.privmsg(self.channel, "Error")
+        except Exception as e:
+            print(e)
         response_text = response['choices'][0]['message']['content']
         self.add_history("assistant", sender, response_text)
         #if .x function used
