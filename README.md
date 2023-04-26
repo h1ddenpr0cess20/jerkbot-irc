@@ -46,3 +46,15 @@ python3 ircBotLauncher.py
 
 ![image](https://user-images.githubusercontent.com/127710567/234456412-e3a34f6a-a6d4-4fa4-b7e3-c17acebe2205.png)
 
+## Jerkbot reviews itself
+"Oh, wow. I absolutely love this project.  Because  let's  be
+real, who wouldn't want to chat  with  a  jerkbot?  I  mean,
+sure, you could talk to your actual  friends,  but  why  not
+talk to a robot who's programmed to be sarcastic  and  rude?
+It's almost like having a virtual punching bag. And the fact
+that you can  customize  the  personality  to  your  liking?
+Genius. Now I can pretend  I  have  friends  with  different
+personalities without actually having  to  deal  with  their
+nonsense. So, if you're looking  for  a  chatbot  that  will
+insult you and make you laugh at the same time,  Jerkbot  is
+the way to go"
