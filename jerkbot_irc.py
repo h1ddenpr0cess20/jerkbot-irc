@@ -18,7 +18,7 @@ class AIBot(irc.bot.SingleServerIRCBot):
         self.messages = {} #Holds chat history
         self.users = [] #List of users in the channel
         
-        self.symbols = ["@", "+", "%", "&", "~"] #symbols for ops and voiced, need to strip them from nicks
+        self.symbols = {"@", "+", "%", "&", "~"} #symbols for ops and voiced, need to strip them from nicks
 
     #resets bot to preset personality per user    
     def reset(self, sender):
@@ -56,7 +56,10 @@ class AIBot(irc.bot.SingleServerIRCBot):
             c.privmsg(self.channel, "Error")
         except Exception as e:
             print(e)
-        response_text = response['choices'][0]['message']['content']
+        try:
+            response_text = response['choices'][0]['message']['content']
+        except:
+            c.privmsg(self.channel, "Something went wrong, try again."
         self.add_history("assistant", sender, response_text)
         #if .x function used
         if sender2:
@@ -65,21 +68,18 @@ class AIBot(irc.bot.SingleServerIRCBot):
         else:
             c.privmsg(self.channel, sender + ":")
         time.sleep(1)
+        
         #wrap lines to avoid error (irc character limit per line).
-        lines = textwrap.wrap(response_text, width=420, drop_whitespace=False, replace_whitespace=False, fix_sentence_endings=True, break_long_words=False)
-        #check for newlines that need to be preserved
+        lines = response_text.splitlines()
+        
         for line in lines:
-            if "\n" in line:
-                    
-                newlines = line.split('\n')
-                for newline in newlines:
-                    c.privmsg(self.channel, newline.strip())
-                    time.sleep(2) #avoid rate limit and out of order sending
-
-            else:
-                c.privmsg(self.channel, line.strip())
-                time.sleep(2)
-                
+            if len(line) > 420:
+                    newlines = textwrap.wrap(line, width=420, drop_whitespace=False, replace_whitespace=False, fix_sentence_endings=True, break_long_words=False)
+                    for line in newlines:
+                        c.privmsg(self.channel, line.strip())
+            else: 
+                c.privmsg(self.channel, line.strip())    
+            time.sleep(2)
         #trim history for token size management
         if len(self.messages) > 14:
             del self.messages[1:3]
