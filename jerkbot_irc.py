@@ -76,9 +76,9 @@ class AIBot(irc.bot.SingleServerIRCBot):
             if len(line) > 420:
                     newlines = textwrap.wrap(line, width=420, drop_whitespace=False, replace_whitespace=False, fix_sentence_endings=True, break_long_words=False)
                     for line in newlines:
-                        c.privmsg(self.channel, line.strip())
+                        c.privmsg(self.channel, line)
             else: 
-                c.privmsg(self.channel, line.strip())    
+                c.privmsg(self.channel, line)    
             time.sleep(2)
         #trim history for token size management
         if len(self.messages) > 14:
