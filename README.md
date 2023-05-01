@@ -37,14 +37,6 @@ python3 ircBotLauncher.py
 **.help _botname_**
     Display the help menu
 
-## Screenshots
-### Default personality
-![image](https://user-images.githubusercontent.com/127710567/234454514-9084e364-c495-41e5-807b-ae965f180cd5.png)
-
-### Persona feature
-![image](https://user-images.githubusercontent.com/127710567/234455016-71a4cba9-7dfa-4724-9898-a0b07fe146d0.png)
-
-![image](https://user-images.githubusercontent.com/127710567/234456412-e3a34f6a-a6d4-4fa4-b7e3-c17acebe2205.png)
 
 ## Jerkbot reviews itself
 "Oh, wow. I absolutely love this project.  Because  let's  be
