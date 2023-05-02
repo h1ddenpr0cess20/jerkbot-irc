@@ -1,6 +1,7 @@
 # jerkbot-irc
-Jerkbot is an OpenAI chatbot for IRC (Internet Relay Chat).  It is named for the sarcastic jerk personality I use for my instance.  You can set any default personality you would like.  It can be changed at any time, and each user has their own separate chat history with their chosen personality setting.  Users can interact with each others chat histories for collaboration if they would like, but otherwise, conversations are separated.
+Jerkbot is an OpenAI chatbot for IRC (Internet Relay Chat).  It has a great prompt that allows it to roleplay as almost anything you can think of.  It is named for the sarcastic jerk personality I use for my instance.  You can set any default personality you would like.  It can be changed at any time, and each user has their own separate chat history with their chosen personality setting.  Users can interact with each others chat histories for collaboration if they would like, but otherwise, conversations are separated.
 
+Not a fan of the default personality or the name of this project?  Check out my alternate version.  Same great bot, with a friendlier, more helpful personality, [infinibot-irc](https://github.com/h1ddenpr0cess20/infinibot-irc)
 ## Installation
 
 ```
